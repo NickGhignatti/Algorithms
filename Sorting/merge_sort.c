@@ -1,18 +1,18 @@
-void merge(int *v, int p, int q, int r, int *buffer) {
-    int i = p, j = (q + 1), k = 0;
-    while (i <= q && j <= r) {
-        if (v[i] <= v[j]){
-            buffer[k] = v[i];
-            i++;
+void merge(int *v, int start, int middle, int end, int *buffer) {
+    int i = start, j = (middle + 1), k = 0;
+    while (i <= middle && j <= end) {                         // looping until the 2 index will switch,
+        if (v[i] <= v[j]){                                    // every time gonna check who has the lower number 
+            buffer[k] = v[i];                                 // between the 2 part (or sub-array) and going to the
+            i++;                                              // next value of the onw with it,
         }
         else{
             buffer[k] = v[j];
             j++;
         }
-        k++;
-    }
-    while (i <= q){
-        buffer[k] = v[i];
+        k++;                                                  // then increasing the position of the array storing the 
+    }                                                         // ordered values.
+    while (i <= middle){                                      // The extra value of one of the 2 parts (or sub-arrays)
+        buffer[k] = v[i];                                     // is gonna get inserted at the very least
         i++;
         k++;
     }
@@ -21,16 +21,16 @@ void merge(int *v, int p, int q, int r, int *buffer) {
         j++;
         k++;
     }
-    for (k = p; k <= r; k++){
-        v[k] = buffer[k - p];
+    for (k = start; k <= end; k++){                           // and then the array containing the ordered values is copied
+        v[k] = buffer[k - start];                             // in the array
     }
 }
 
-void merge_sort(int *v, int p, int r, int *buffer) {
-    if (p < r){
-        int half = (p + r) / 2;
-        merge_sort(v, p, half, buffer);
-        merge_sort(v, half + 1, r, buffer);
-        merge(v, p, half, r, buffer);
+void merge_sort(int *v, int start, int end, int *buffer) {
+    if (start < end){                                         // if the start index is less than the end
+        int midlle = (start + end) / 2;                       // calculating the half
+        merge_sort(v, start, middle, buffer);                 // dividing, ordering and merging the left part
+        merge_sort(v, middle + 1, end, buffer);               // dividing, ordering and merging the right part
+        merge(v, start, middle, end, buffer);                 // mergin the 2 parts
     }
 }
