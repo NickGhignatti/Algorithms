@@ -26,7 +26,6 @@ void merge(int *v, int p, int q, int r, int *buffer) {
     }
 }
 
-/* Ordina la porzione di array compresa tra gli indici p e r (inclusi) */
 void merge_sort(int *v, int p, int r, int *buffer) {
     if (p < r){
         int half = (p + r) / 2;
