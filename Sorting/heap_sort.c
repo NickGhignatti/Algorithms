@@ -20,7 +20,7 @@ void heapify(int arr[], int n, int i) {
 
 void heapSort(int arr[], int n) {
 	int i;
-	for (i = n / 2 - 1; i >= 0; i--)               // heapifying all the nodes from the last to the beginner
+	for (i = n / 2 - 1; i >= 0; i--)                // heapifying all the nodes from the last to the beginner
 		heapify(arr, n, i);
 	for (i = n - 1; i >= 0; i--) {
 		swap(&arr[0], &arr[i]);
