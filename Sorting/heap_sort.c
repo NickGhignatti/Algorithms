@@ -23,7 +23,7 @@ void heapSort(int arr[], int n) {
 	for (i = n / 2 - 1; i >= 0; i--)                // heapifying all the nodes from the last to the beginner
 		heapify(arr, n, i);
 	for (i = n - 1; i >= 0; i--) {
-		swap(&arr[0], &arr[i]);
+		swap(&arr[0], &arr[i]);                 // and then reordering from the smallest to the largest
 		heapify(arr, i, 0);
 	}
 }
