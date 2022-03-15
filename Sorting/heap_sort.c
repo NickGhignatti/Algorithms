@@ -13,7 +13,7 @@ void heapify(int arr[], int n, int i) {
 	if (right < n && arr[right] > arr[largest])
 		largest = right;
 	if (largest != i) {                             // if it found a larger number it will switch
-		swap(&arr[i], &arr[largest]);               // and then do it again with the child's index
+		swap(&arr[i], &arr[largest]);           // and then do it again with the child's index
 		heapify(arr, n, largest);
 	}
 }
