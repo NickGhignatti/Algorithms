@@ -1,6 +1,6 @@
 ### Algorithms pseudocodes:  
 
-</details>
+<details>
 #### Insertion sort:
 ```
 InsertionSort(array)  
