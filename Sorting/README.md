@@ -32,6 +32,36 @@ QuickSort(array, start, end)
 
 #### Merge sort:  
 ```
+Merge(array, start, middle, end, buffer)
+	i <-- start
+	j <-- middle + 1
+	k <-- 0
+	while i <= middle and j <= end
+		if array[i] < array[j]
+			buffer[k] = array[i]
+			i++
+		else
+			buffer[k] = array[j]
+			j++
+		k++
+	while i <= middle
+		buffer[k] = array[i]
+		k++
+		i++
+	while j <= end
+		buffer[k] = array[j]
+		k++
+		j++
+	for k <-- start to end
+		array[k] <-- array[k - start] 
+
+
+MergeSort(array, start, end, buffer)
+	if start < end
+		middle <-- (start + end) // 2
+		MergeSort(array, start, middle, buffer)
+		MergeSort(array, middle + 1, end, buffer)
+		Merge(array, start, middle, end, buffer)
 ```
 
 #### Heap sort:  
