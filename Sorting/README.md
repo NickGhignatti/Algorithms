@@ -66,5 +66,25 @@ MergeSort(array, start, end, buffer)
 
 #### Heap sort:  
 ```
+Heapify(array, len, index)
+	largest <-- index
+	leftChild <-- 2 * i + 1
+	rightChild <-- 2 * i + 2
+	if left < len and array[leftChild] > array[largest]
+		largest = leftChild
+	if right < len and array[rightChild] > array[largest]
+		largest = rightChild
+	if largest != i
+		swap(arra[i], array[largest])
+		heapify(array, largest)
+
+HeapSort(array)
+	* for max heap *
+	for i <-- 0 to (len(array) // 2 - 1)
+		Heapify(array, i)
+	* add this to min heap *
+	for i <-- len(array) - 1 to 0
+		swap(array[0], array[i])
+		Heapify(array, i, 0)
 ```
 
