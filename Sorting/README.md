@@ -1,6 +1,7 @@
 ### Algorithms pseudocodes:  
 
 #### Insertion sort:  
+[%collapsible]
 ```
 InsertionSort(array)  
     for i <-- 2 to length(array)  
