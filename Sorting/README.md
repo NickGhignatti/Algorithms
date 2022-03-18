@@ -81,7 +81,7 @@ Heapify(array, len, index)
 HeapSort(array)
 	* for max heap *
 	for i <-- 0 to (len(array) // 2 - 1)
-		Heapify(array, i)
+		Heapify(array, len(array), i)
 	* add this to min heap *
 	for i <-- len(array) - 1 to 0
 		swap(array[0], array[i])
