@@ -1,6 +1,5 @@
 ### Algorithms pseudocodes:  
 
-<details>
 #### Insertion sort:
 ```
 InsertionSort(array)  
@@ -12,7 +11,6 @@ InsertionSort(array)
 		   	j--  
       	arr[j + 1] <-- value
 ```  
-</details>
 #### Quick sort:  
 ```
 Partition(array, first, last)
