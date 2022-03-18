@@ -1,17 +1,17 @@
 void merge(int *arr, int start, int middle, int end, int *buffer) {
     int i = start, j = (middle + 1), k = 0;
-    while (i <= middle && j <= end) {                         // looping until the 2 index will switch,
-        if (arr[i] <= arr[j]){                                    // every time gonna check who has the lower number 
+    while (i <= middle && j <= end) {                           // looping until the 2 index will switch,
+        if (arr[i] <= arr[j]){                                  // every time gonna check who has the lower number 
             buffer[k] = arr[i];                                 // between the 2 part (or sub-array) and going to the
-            i++;                                              // next value of the onw with it,
+            i++;                                                // next value of the onw with it,
         }
         else{
             buffer[k] = arr[j];
             j++;
         }
-        k++;                                                  // then increasing the position of the array storing the 
-    }                                                         // ordered values.
-    while (i <= middle){                                      // The extra value of one of the 2 parts (or sub-arrays)
+        k++;                                                    // then increasing the position of the array storing the 
+    }                                                           // ordered values.
+    while (i <= middle){                                        // The extra value of one of the 2 parts (or sub-arrays)
         buffer[k] = arr[i];                                     // is gonna get inserted at the very least
         i++;
         k++;
@@ -21,7 +21,7 @@ void merge(int *arr, int start, int middle, int end, int *buffer) {
         j++;
         k++;
     }
-    for (k = start; k <= end; k++){                           // and then the array containing the ordered values is copied
+    for (k = start; k <= end; k++){                             // and then the array containing the ordered values is copied
         arr[k] = buffer[k - start];                             // in the array
     }
 }

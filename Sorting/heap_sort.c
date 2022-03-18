@@ -13,17 +13,17 @@ void heapify(int arr[], int n, int i) {
 	if (right < n && arr[right] > arr[largest])
 		largest = right;
 	if (largest != i) {                             // if it found a larger number it will switch
-		swap(&arr[i], &arr[largest]);               // and then do it again with the child's index
+		swap(&arr[i], &arr[largest]);           // and then do it again with the child's index
 		heapify(arr, n, largest);
 	}
 }
 
 void heapSort(int arr[], int n) {
 	int i;
-	for (i = n / 2 - 1; i >= 0; i--)               // heapifying all the nodes from the last to the beginner
+	for (i = n / 2 - 1; i >= 0; i--)                // heapifying all the nodes from the last to the beginner
 		heapify(arr, n, i);
 	for (i = n - 1; i >= 0; i--) {
-		swap(&arr[0], &arr[i]);
+		swap(&arr[0], &arr[i]);                 // and then reordering from the smallest to the largest
 		heapify(arr, i, 0);
 	}
 }
