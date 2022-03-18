@@ -27,8 +27,8 @@ void merge(int *arr, int start, int middle, int end, int *buffer) {
 }
 
 void merge_sort(int *arr, int start, int end, int *buffer) {
-    if (start < end){                                         // if the start index is less than the end
-        int middle = (start + end) / 2;                       // calculating the half
+    if (start < end){                                           // if the start index is less than the end
+        int middle = (start + end) / 2;                         // calculating the half
         merge_sort(arr, start, middle, buffer);                 // dividing, ordering and merging the left part
         merge_sort(arr, middle + 1, end, buffer);               // dividing, ordering and merging the right part
         merge(arr, start, middle, end, buffer);                 // mergin the 2 parts
