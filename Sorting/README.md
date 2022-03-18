@@ -1,10 +1,10 @@
-##### Algorithms pseudocodes:  
+### Algorithms pseudocodes:  
 
-###### Insertion sort:  
+#### Insertion sort:  
 
-###### Quick sort:  
+#### Quick sort:  
 
-###### Merge sort:  
+#### Merge sort:  
 
-###### Heap sort:  
+#### Heap sort:  
 
