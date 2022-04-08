@@ -16,11 +16,11 @@ InsertionSort(array)
 Partition(array, first, last)
 	pivot <-- array[last]
 	i <-- first - 1
-	for j <-- first to high
+	for j <-- first to last
 		if array[j] <= pivot  
 			swap(array[j], array[i])
 			i++
-		swap(array[i+1], array[high])
+		swap(array[i+1], array[last])
 	return i + 1
 
 QuickSort(array, start, end)
