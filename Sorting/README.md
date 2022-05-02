@@ -121,4 +121,7 @@ BFS(graph, queue, index)
 	element = queue.pop()
 	for edge in element
 		Bfs(graph, queue, next)
+		
+Complexity = O(V + E)  
+
 ```
