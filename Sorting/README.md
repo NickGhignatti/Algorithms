@@ -119,11 +119,23 @@ Complexity:
 
 #### BFS (breath-first search)
 ```
-BFS(graph, queue, index)
-	queue.add(index)
-	element = queue.pop()
-	for edge in element
-		Bfs(graph, queue, next)
+create a queue Q 
+mark v as visited and put v into Q 
+while Q is non-empty 
+    remove the head u of Q 
+    mark and enqueue all (unvisited) neighbours of u
+		
+Complexity = O(V + E)  
+
+```
+	
+#### DFS (depth-first search)
+```
+DFS(G, u)
+    u.visited = true
+    for each v ∈ G.Adj[u]
+        if v.visited == false
+            DFS(G,v)
 		
 Complexity = O(V + E)  
 
