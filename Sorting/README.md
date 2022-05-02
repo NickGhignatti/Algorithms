@@ -34,6 +34,12 @@ QuickSort(array, start, end)
 		pi <-- partition(array, start end)
 		QuickSort(array, start, pi - 1)
 		QuickSort(array, pi + 1, end)
+		
+Complexity:
+--> best case = O(n log(n))
+--> worst case = O(n^2)
+--> medium case = O(n log(n))
+		
 ```
 
 #### Merge sort:  
@@ -70,9 +76,9 @@ MergeSort(array, start, end, buffer)
 		Merge(array, start, middle, end, buffer)
 		
 Complexity:
---> best case = O(nlog(n))
---> worst case = O(nlog(n))
---> medium case = O(nlog(n))
+--> best case = O(n log(n))
+--> worst case = O(n log(n))
+--> medium case = O(n log(n))
 		
 ```
 
