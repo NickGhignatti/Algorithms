@@ -26,7 +26,7 @@ Partition(array, first, last)
 		if array[j] <= pivot  
 			i++
 			swap(array[j], array[i])
-		swap(array[i+1], array[last])
+	swap(array[i+1], array[last])
 	return i + 1
 
 QuickSort(array, start, end)
