@@ -112,3 +112,13 @@ Complexity:
 		
 ```
 
+###  Graph pseudocodes:  
+
+#### BFS (breath-first search)
+```
+BFS(graph, queue, index)
+	queue.add(index)
+	element = queue.pop()
+	for edge in element
+		Bfs(graph, queue, next)
+```
