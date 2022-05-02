@@ -86,14 +86,14 @@ Complexity:
 ```
 Heapify(array, len, index)
 	largest <-- index
-	leftChild <-- 2 * i + 1
-	rightChild <-- 2 * i + 2
+	leftChild <-- 2 * index + 1
+	rightChild <-- 2 * index + 2
 	if left < len and array[leftChild] > array[largest]
 		largest = leftChild
 	if right < len and array[rightChild] > array[largest]
 		largest = rightChild
-	if largest != i
-		swap(arra[i], array[largest])
+	if largest != index
+		swap(arra[index], array[largest])
 		heapify(array, largest)
 
 HeapSort(array)
