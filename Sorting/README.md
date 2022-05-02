@@ -10,12 +10,13 @@ InsertionSort(array)
         	array[j + 1] <-- array[j]  
 		   	j--  
       	arr[j + 1] <-- value
-```
-##### Complexity:
-best case = O(n)  
-best case = O(n^2)  
-best case = O(n^2)  
-  
+
+Complexity:
+--> best case = O(n)
+--> worst case = O(n^2)
+--> medium case = O(n^2)
+
+```  
 #### Quick sort:  
 ```
 Partition(array, first, last)
