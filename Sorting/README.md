@@ -24,8 +24,8 @@ Partition(array, first, last)
 	i <-- first - 1
 	for j <-- first to last
 		if array[j] <= pivot  
-			swap(array[j], array[i])
 			i++
+			swap(array[j], array[i])
 		swap(array[i+1], array[last])
 	return i + 1
 
