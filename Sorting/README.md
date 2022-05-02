@@ -68,6 +68,12 @@ MergeSort(array, start, end, buffer)
 		MergeSort(array, start, middle, buffer)
 		MergeSort(array, middle + 1, end, buffer)
 		Merge(array, start, middle, end, buffer)
+		
+Complexity:
+--> best case = O(nlog(n))
+--> worst case = O(nlog(n))
+--> medium case = O(nlog(n))
+		
 ```
 
 #### Heap sort:  
