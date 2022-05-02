@@ -1,3 +1,4 @@
+<details>
 ### Algorithms pseudocodes:  
 
 #### Insertion sort:
@@ -111,7 +112,8 @@ Complexity:
 --> medium case = O(n log(n))
 		
 ```
-
+</details>
+	
 ###  Graph pseudocodes:  
 
 #### BFS (breath-first search)
