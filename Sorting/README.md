@@ -1,5 +1,5 @@
 <details>
-### Algorithms pseudocodes:  
+<summary><h3><b>Algorithms pseudocodes:</b></h3></summary>
 
 #### Insertion sort:
 ```
@@ -113,8 +113,9 @@ Complexity:
 		
 ```
 </details>
-	
-###  Graph pseudocodes:  
+
+<details>
+<summary><h3><b>Graph pseudocodes:</b></h3></summary>
 
 #### BFS (breath-first search)
 ```
@@ -127,3 +128,4 @@ BFS(graph, queue, index)
 Complexity = O(V + E)  
 
 ```
+</details>
