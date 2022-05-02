@@ -104,5 +104,11 @@ HeapSort(array)
 	for i <-- len(array) - 1 to 0
 		swap(array[0], array[i])
 		Heapify(array, i, 0)
+		
+Complexity:
+--> best case = O(n log(n))
+--> worst case = O(n log(n))
+--> medium case = O(n log(n))
+		
 ```
 
