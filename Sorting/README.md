@@ -93,7 +93,7 @@ Heapify(array, len, index)
 	if right < len and array[rightChild] > array[largest]
 		largest = rightChild
 	if largest != index
-		swap(arra[index], array[largest])
+		swap(array[index], array[largest])
 		heapify(array, largest)
 
 HeapSort(array)
