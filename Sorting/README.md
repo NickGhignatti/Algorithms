@@ -12,9 +12,9 @@ InsertionSort(array)
       	arr[j + 1] <-- value
 ```  
 ##### Complexity:
-###### best case = O(n)
-###### best case = O(n^2)
-###### best case = O(n^2)  
+ best case = O(n)
+ best case = O(n^2)
+ best case = O(n^2)  
   
 #### Quick sort:  
 ```
