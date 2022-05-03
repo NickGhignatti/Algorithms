@@ -2,7 +2,7 @@
 <summary><h3><b>Algorithms pseudocodes:</b></h3></summary>
 
 #### Insertion sort:
-```
+```js  
 InsertionSort(array)  
     for i <-- 2 to length(array)  
     	value <-- array[i]  
@@ -19,7 +19,7 @@ Complexity:
 
 ```  
 #### Quick sort:  
-```
+```js  
 Partition(array, first, last)
 	pivot <-- array[last]
 	i <-- first - 1
@@ -44,7 +44,7 @@ Complexity:
 ```
 
 #### Merge sort:  
-```
+```js  
 Merge(array, start, middle, end, buffer)
 	i <-- start
 	j <-- middle + 1
@@ -84,7 +84,7 @@ Complexity:
 ```
 
 #### Heap sort:  
-```
+```js 
 Heapify(array, len, index)
 	largest <-- index
 	leftChild <-- 2 * index + 1
@@ -118,7 +118,7 @@ Complexity:
 <summary><h3><b>Graph pseudocodes:</b></h3></summary>
 
 #### BFS (breath-first search)
-```
+```js  
 create a queue Q 
 mark v as visited and put v into Q 
 while Q is non-empty 
@@ -130,7 +130,7 @@ Complexity = O(V + E)
 ```
 	
 #### DFS (depth-first search)
-```
+```js  
 DFS(G, u)
     u.visited = true
     for each v ∈ G.Adj[u]
