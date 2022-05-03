@@ -32,7 +32,7 @@ Partition(array, first, last)
 
 QuickSort(array, start, end)
 	if start < end
-		pi <-- partition(array, start end)
+		pi <-- Partition(array, start end)
 		QuickSort(array, start, pi - 1)
 		QuickSort(array, pi + 1, end)
 		
