@@ -1,3 +1,4 @@
+/* Ghignatti Nicolò  0001028531  classe B  nicolo.ghignatti@studio.unibo.it*/
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -14,7 +15,7 @@ struct Move {
 struct Queue {
     int head;
     int tail;
-    int capacity;
+    unsigned int capacity;
     struct Move *data;
 };
 
@@ -38,7 +39,7 @@ static struct Field *initField(int rows, int columns){
 }
 
 /* Function to initialize an instance of the struct Queue */
-static struct Queue *initQueue(int head, int tail, unsigned long int capacity){
+static struct Queue *initQueue(int head, int tail, unsigned int capacity){
     struct Queue *q = (struct Queue *)(malloc(sizeof(struct Queue)));
     q->head = head;
     q->tail = tail;
@@ -48,26 +49,26 @@ static struct Queue *initQueue(int head, int tail, unsigned long int capacity){
 }
 
 /* Function to initialize an instance of the struct Move */
-static struct Move *initNode(int x, int y, int complexity, char *moves, char newChar) {
+static struct Move initNode(int x, int y, int complexity, char *moves, char newChar) {
     int index;
-    struct Move *l = (struct Move *)(malloc(sizeof(struct Move)));
-    l->complexity = complexity;
-    l->x = x;
-    l->y = y;
-    l->moves = (char *)(calloc((complexity + 1), sizeof(char)));
+    struct Move l;
+    l.complexity = complexity;
+    l.x = x;
+    l.y = y;
+    l.moves = (char *)(calloc((complexity + 1), sizeof(char)));
     for(index = 0; index < complexity; index++){
         if(index == (complexity - 1))
-            l->moves[index] = newChar;
+            l.moves[index] = newChar;
         else
-            l->moves[index] = moves[index];
+            l.moves[index] = moves[index];
     }
-    l->moves[index] = '\n';
+    l.moves[index] = '\0';
     return l;
 }
 
 /* Function to add an element at the head of the queue */
-static void push(struct Queue *q, struct Move *move){
-    q->data[q->tail] = *move;
+static void push(struct Queue *q, struct Move move){
+    q->data[q->tail] = move;
     q->tail += 1;
 }
 
@@ -78,19 +79,32 @@ static struct Move *get(struct Queue *q){
     return data;
 }
 
-/* Function to free al the memory allocated */
-static void freeAll(struct Field *f, struct Queue *q){
+static void freeField(struct Field *f){
     int index;
     for(index = 0; index < f->rows; index++ ){
         free(f->field[index]);
     }
     free(f->field);
     free(f);
-    for(index = 0; index < q->tail; index++){
-        free(q->data[index].moves);
+}
+
+static void freeNode(struct Move node){
+    free(node.moves);
+}
+
+static void freeQueue(struct Queue *q){
+    int index;
+    for(index = 0; index < q->capacity; index++){
+        freeNode(q->data[index]);
     }
     free(q->data);
     free(q);
+}
+
+/* Function to free al the memory allocated */
+static void freeAll(struct Field *f, struct Queue *q){
+    freeField(f);
+    freeQueue(q);
 }
 
 /* Function that return to number of moves that the robot should do to get in (x, y) */
@@ -231,13 +245,15 @@ static void bfs(struct Field *f, struct Queue *q) {
             }
         }
     }
+    /* add */
+
 }
 
 int main(int argc, char *argv[]) {
     FILE *f;
     struct Queue *q;
     struct Field *fi;
-    unsigned long int capacity;
+    /*unsigned int capacity;*/
 
     /* check if the number arguments passed in is correct */
     if (argc != 2) {
@@ -249,19 +265,22 @@ int main(int argc, char *argv[]) {
 
     /* initializing the matrix (field) from the file and the queue*/
     fi = readFile(f);
-    capacity = (fi->rows - 3) * ((fi->columns / 3) + 1) + (fi->columns - 3) * ((fi->rows / 3) + 1);
-    q = initQueue(0, 0, capacity); /* (fi->rows * fi->columns) */
+    /*capacity = (fi->rows - 3) * ((fi->columns / 3) + 1) + (fi->columns - 3) * ((fi->rows / 3) + 1);*/
+    q = initQueue(0, 0, (unsigned int)(((fi->rows - 3) * (fi->columns - 3)))); /* (fi->rows * fi->columns) */
 
     /* doing the bfs */
     bfs(fi, q);
 
     /* printing the information (the time that the robot spend to reach the target, if he can) */
     /* and the sequence of moves */
+
     printf("%d\n", getComplexity(q, (fi->rows - 2), (fi->columns - 2)));
     printf("%s\n", getSequence(q, (fi->rows - 2), (fi->columns - 2)));
 
     /* and then freeing all the memory allocated */
     freeAll(fi, q);
+
+    fclose(f);
 
     return 0;
 }
