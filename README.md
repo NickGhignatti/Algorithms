@@ -1,5 +1,5 @@
 <details>
-<summary><h3><b>Algorithms pseudocodes:</b></h3></summary>
+<summary><h3><b>Sorting algorithms pseudocodes:</b></h3></summary>
 
 #### Insertion sort:
 ```js  
@@ -139,5 +139,95 @@ DFS(G, u)
 		
 Complexity = O(V + E)  
 
+```
+</details>
+	
+<details>
+<summary><h3><b>Minimum path from single source algorithms pseudocodes:</b></h3></summary>
+
+#### Dijkstra
+```js
+Dijkstra(G, w, s)
+	foreach v ∈ V[G]
+		d[v] = INFINITY
+		p[v] = NULL
+	d[s] = 0
+	S = NULL
+	Q = V[G]
+	while Q != NULL
+		u = ExtractMin(Q)
+		S = S ∪ u
+		for v ∈ Adj(u)
+			if d[v] > d[u] + w(u, v)
+				d[v] = d[u] + w(u, v)
+				p[v] = u
+	
+Complexity = O(VV)
+```
+	
+#### Bellman-Ford
+```js
+BellmanFord(G, w, s)
+	foreach v ∈ V[G]
+		d[v] = INFINITY
+		p[v] = NULL
+	d[s] = 0
+	for i = 1 to |V[G] - 1|
+		for (u, v) ∈ E[G]
+			relax(u, v, w)
+	for (u, v) ∈ E[G]
+		if d[v] > d[u] + w(u, v)
+			return False
+	return True
+	
+Complexity = O(VE)
+```
+</details>
+	
+<details>
+<summary><h3><b>Minimum path from all the nodes algorithms pseudocodes:</b></h3></summary>
+
+#### Floyd-Warshall
+```js
+FloydWarshall(W)
+	n = rows(W)
+	D(0) = W
+	for k = 1 to n
+		for i = 1 to n
+			for j = 1 to n
+				d(i, j)[k] = min (d(i, j)[k - 1], d(i, k)[k - 1] + d(k, j)[k - 1])
+	return D(n)
+	
+Complexity = O(VVV)
+```
+</details>
+
+<details>
+<summary><h3><b>Max flow algorithms pseudocodes:</b></h3></summary>
+
+#### Ford-Fulkerson
+```js
+FordFulkerson(G, s, t)
+	foreach (u, w) ∈ E[G]
+		f[u, v] = 0
+		f[v, u] = c[v, u] = 0
+	while (p = path(s, t))
+		c(p) = min { c(u, v) : (u, v) }
+		foreach (u, v) in p
+			f[u, v] = [u, v] + c(p)
+			c[v, u] = c[v, u] + c(p)
+	
+Complexity = O(Ef*)
+```
+
+#### Edmonds - Karp
+```js
+EdmondsKarp(G, s, t)
+1) set f(u, v) = 0
+2) p = bfs(Gf)
+3) increase the flow on p and update Gf
+4) repeat 2-3 while a path exists
+	
+Complexity = O(nmm)
 ```
 </details>
