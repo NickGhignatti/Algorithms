@@ -143,6 +143,20 @@ Complexity = O(V + E)
 </details>
 	
 <details>
+<summary><h3><b>Topologial sort pseudocodes:</b></h3></summary>
+
+#### Topological sort
+```js  
+TopologicalSort(G)
+	dfs(G)
+	when the visit of a vertex is ended push it at the head of the list
+	return list
+		
+Complexity = O(V + E)  
+```
+</details>
+	
+<details>
 <summary><h3><b>MST algorithms pseudocodes:</b></h3></summary>
 
 #### Kruskal
