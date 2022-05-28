@@ -143,6 +143,45 @@ Complexity = O(V + E)
 </details>
 	
 <details>
+<summary><h3><b>MST algorithms pseudocodes:</b></h3></summary>
+
+#### Kruskal
+```js  
+Kruskal(G)
+	A = NULL
+	foreach v ∈ V[G]
+		Make-Set(v)
+	Sort(E[G], +)
+	foreach (u, v) ∈ E[G]
+		if Find-Set(u) != Find-Set(v)
+			A = A ∪ { (u, v) }
+			union(u, v)
+	return A
+	
+Complexity = O(E log E)
+```
+
+#### Prim
+```js  
+Prim(G, s)
+	Q = V[G]
+	foreach v ∈ V[G]
+		key[u] = INFINITY
+	key[s] = 0
+	p[s] = NULL
+	while Q != NULL
+		u = ExtractMin(Q)
+		foreach v ∈ Adj(u)
+			if v ∈ Q && w(u, v) < key[v]
+				p[v] = u
+				key[v] = w(u, v)
+
+Complexity = O(E log V) // O(E + V log V)
+```
+
+</details>
+	
+<details>
 <summary><h3><b>Minimum path from single source algorithms pseudocodes:</b></h3></summary>
 
 #### Dijkstra
