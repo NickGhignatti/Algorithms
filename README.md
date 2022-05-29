@@ -119,11 +119,24 @@ Complexity:
 
 #### BFS (breath-first search)
 ```js  
-create a queue Q 
-mark v as visited and put v into Q 
-while Q is non-empty 
-    remove the head u of Q 
-    mark and enqueue all (unvisited) neighbours of u
+bfs(G)
+	foreach v ∈ V[G]
+		color[u] = white
+		d[u] = INFINITY
+		p[u] = NULL
+	color[s] = WHITE
+	d[s] = 0
+	Q = EMPTY
+	while Q
+		u = head(Q)
+		foreach v ∈ Adj(u)
+			if color[v] == white
+				color[v] = gray
+				d[v] = d[u] + 1
+				p[v] = u
+				enqueue(Q, v)
+		dequeue(Q, v)
+		color[v] = black
 		
 Complexity = O(V + E)  
 
@@ -131,11 +144,26 @@ Complexity = O(V + E)
 	
 #### DFS (depth-first search)
 ```js  
-DFS(G, u)
-    u.visited = true
-    for each v ∈ G.Adj[u]
-        if v.visited == false
-            DFS(G,v)
+DFS(G)
+	foreach v ∈ V[G]
+		color[v] = white
+		p[v] = NULL
+	time = 0
+	foreach v ∈ V[G]
+		if color[v] == white
+			dfsVisit(v)
+
+dfsVisit(v)
+	color[v] = gray
+	time++
+	d[v] = time
+	foreach u ∈ Adj(v)
+		if color[u] == white
+			p[u] = v
+			dfsVisit(u)
+	color[v] = black
+	time++
+	f[v] = time
 		
 Complexity = O(V + E)  
 
