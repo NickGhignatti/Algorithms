@@ -293,7 +293,7 @@ FordFulkerson(G, s, t)
 		f[u, v] = 0
 		f[v, u] = c[v, u] = 0
 	while (p = path(s, t))
-		c(p) = min { c(u, v) : (u, v) }
+		c(p) = min { c(u, v) : (u, v) in p}
 		foreach (u, v) in p
 			f[u, v] = [u, v] + c(p)
 			c[v, u] = c[v, u] + c(p)
