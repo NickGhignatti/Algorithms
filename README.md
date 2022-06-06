@@ -295,7 +295,7 @@ FordFulkerson(G, s, t)
 	while (p = path(s, t))
 		c(p) = min { c(u, v) : (u, v) in p}
 		foreach (u, v) in p
-			f[u, v] = [u, v] + c(p)
+			f[u, v] = f[u, v] + c(p)
 			c[v, u] = c[v, u] + c(p)
 	
 Complexity = O(Ef*)
