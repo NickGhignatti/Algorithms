@@ -1,5 +1,5 @@
 <details>
-<summary><h3><b>Algorithms pseudocodes:</b></h3></summary>
+<summary><h3><b>Sorting algorithms pseudocodes:</b></h3></summary>
 
 #### Insertion sort:
 ```js  
@@ -119,11 +119,24 @@ Complexity:
 
 #### BFS (breath-first search)
 ```js  
-create a queue Q 
-mark v as visited and put v into Q 
-while Q is non-empty 
-    remove the head u of Q 
-    mark and enqueue all (unvisited) neighbours of u
+bfs(G)
+	foreach v ∈ V[G]
+		color[u] = white
+		d[u] = INFINITY
+		p[u] = NULL
+	color[s] = WHITE
+	d[s] = 0
+	Q = EMPTY
+	while Q
+		u = head(Q)
+		foreach v ∈ Adj(u)
+			if color[v] == white
+				color[v] = gray
+				d[v] = d[u] + 1
+				p[v] = u
+				enqueue(Q, v)
+		dequeue(Q, v)
+		color[v] = black
 		
 Complexity = O(V + E)  
 
@@ -131,13 +144,171 @@ Complexity = O(V + E)
 	
 #### DFS (depth-first search)
 ```js  
-DFS(G, u)
-    u.visited = true
-    for each v ∈ G.Adj[u]
-        if v.visited == false
-            DFS(G,v)
+DFS(G)
+	foreach v ∈ V[G]
+		color[v] = white
+		p[v] = NULL
+	time = 0
+	foreach v ∈ V[G]
+		if color[v] == white
+			dfsVisit(v)
+
+dfsVisit(v)
+	color[v] = gray
+	time++
+	d[v] = time
+	foreach u ∈ Adj(v)
+		if color[u] == white
+			p[u] = v
+			dfsVisit(u)
+	color[v] = black
+	time++
+	f[v] = time
 		
 Complexity = O(V + E)  
 
+```
+</details>
+	
+<details>
+<summary><h3><b>Topologial sort pseudocodes:</b></h3></summary>
+
+#### Topological sort
+```js  
+TopologicalSort(G)
+	dfs(G)
+	when the visit of a vertex is ended push it at the head of the list
+	return list
+		
+Complexity = O(V + E)  
+```
+</details>
+	
+<details>
+<summary><h3><b>MST algorithms pseudocodes:</b></h3></summary>
+
+#### Kruskal
+```js  
+Kruskal(G)
+	A = NULL
+	foreach v ∈ V[G]
+		Make-Set(v)
+	Sort(E[G], +)
+	foreach (u, v) ∈ E[G]
+		if Find-Set(u) != Find-Set(v)
+			A = A ∪ { (u, v) }
+			union(u, v)
+	return A
+	
+Complexity = O(E log E)
+```
+
+#### Prim
+```js  
+Prim(G, s)
+	Q = V[G]
+	foreach v ∈ V[G]
+		key[u] = INFINITY
+	key[s] = 0
+	p[s] = NULL
+	while Q != NULL
+		u = ExtractMin(Q)
+		foreach v ∈ Adj(u)
+			if v ∈ Q && w(u, v) < key[v]
+				p[v] = u
+				key[v] = w(u, v)
+
+Complexity = O(E log V) // O(E + V log V)
+```
+
+</details>
+	
+<details>
+<summary><h3><b>Minimum path from single source algorithms pseudocodes:</b></h3></summary>
+
+#### Dijkstra
+```js
+Dijkstra(G, w, s)
+	foreach v ∈ V[G]
+		d[v] = INFINITY
+		p[v] = NULL
+	d[s] = 0
+	S = NULL
+	Q = V[G]
+	while Q != NULL
+		u = ExtractMin(Q)
+		S = S ∪ u
+		for v ∈ Adj(u)
+			if d[v] > d[u] + w(u, v)
+				d[v] = d[u] + w(u, v)
+				p[v] = u
+	
+Complexity = O(VV)
+```
+	
+#### Bellman-Ford
+```js
+BellmanFord(G, w, s)
+	foreach v ∈ V[G]
+		d[v] = INFINITY
+		p[v] = NULL
+	d[s] = 0
+	for i = 1 to |V[G] - 1|
+		for (u, v) ∈ E[G]
+			relax(u, v, w)
+	for (u, v) ∈ E[G]
+		if d[v] > d[u] + w(u, v)
+			return False
+	return True
+	
+Complexity = O(VE)
+```
+</details>
+	
+<details>
+<summary><h3><b>Minimum path from all the nodes algorithms pseudocodes:</b></h3></summary>
+
+#### Floyd-Warshall
+```js
+FloydWarshall(W)
+	n = rows(W)
+	D(0) = W
+	for k = 1 to n
+		for i = 1 to n
+			for j = 1 to n
+				d(i, j)[k] = min (d(i, j)[k - 1], d(i, k)[k - 1] + d(k, j)[k - 1])
+	return D(n)
+	
+Complexity = O(VVV)
+```
+</details>
+
+<details>
+<summary><h3><b>Max flow algorithms pseudocodes:</b></h3></summary>
+
+#### Ford-Fulkerson
+```js
+FordFulkerson(G, s, t)
+	foreach (u, w) ∈ E[G]
+		f[u, v] = 0
+		f[v, u] = c[v, u] = 0
+	while (p = path(s, t))
+		c(p) = min { c(u, v) : (u, v) in p}
+		foreach (u, v) in p
+			f[u, v] = f[u, v] + c(p)
+			c[v, u] = c[v, u] + c(p)
+	
+Complexity = O(Ef*)
+```
+
+#### Edmonds - Karp
+```js
+EdmondsKarp(G, s, t)
+1) set f(u, v) = 0
+2) p = bfs(Gf)
+3) increase the flow on p and update Gf
+4) repeat 2-3 while a path exists
+	
+Complexity = O(nmm)
 ```
 </details>
